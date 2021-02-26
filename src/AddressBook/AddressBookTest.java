@@ -16,6 +16,8 @@ class AddressBookTest {
     @BeforeEach
     public void start() {
         addressBook.add("name", address);
+        addressBook.add("friend", address1);
+        addressBook.add("neighbour", address2);
     }
 
     @org.junit.jupiter.api.Test
@@ -43,12 +45,6 @@ class AddressBookTest {
         assertNull(addressBook.getAddress("1234"));
     }
 
-    @BeforeEach
-    public void newStart() {
-        addressBook.add("friend", address1);
-        addressBook.add("neighbour", address2);
-    }
-
     @org.junit.jupiter.api.Test
     void getPeopleOnStreet() {
         assertEquals(Arrays.asList("name", "neighbour"),
@@ -59,7 +55,7 @@ class AddressBookTest {
     @org.junit.jupiter.api.Test
     void getPeopleInHouse() {
         assertEquals(Arrays.asList("name", "neighbour"),
-                addressBook.getPeopleInHouse(6));
-        assertEquals(Collections.emptyList(), addressBook.getPeopleInHouse(1));
+                addressBook.getPeopleInHouse("Кушелевская дорога", 6));
+        assertEquals(Collections.emptyList(), addressBook.getPeopleInHouse("Москва", 1));
     }
 }

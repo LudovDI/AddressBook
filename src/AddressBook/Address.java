@@ -3,14 +3,26 @@ package AddressBook;
 import java.util.Objects;
 
 public class Address {
-    String street;
-    Integer house;
-    Integer apartment;
+    private final String street;
+    private final Integer house;
+    private final Integer apartment;
 
     public Address(String myStreet, Integer myHouse, Integer myApartment) {
         street = myStreet;
         house = myHouse;
         apartment = myApartment;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public Integer getHouse() {
+        return house;
+    }
+
+    public Integer getApartment() {
+        return apartment;
     }
 
     @Override
@@ -21,5 +33,10 @@ public class Address {
         return Objects.equals(street, address.street) &&
                 Objects.equals(house, address.house) &&
                 Objects.equals(apartment, address.apartment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, house, apartment);
     }
 }
